@@ -1,33 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
     <title>🐙 Octopus to the party 🐙</title>
-</head>
-<body>
-
+  </head>
+  <body>
     <!-- Splashscreen -->
-   <div id="splashscreen">
-    <h1> 🐙 Octopus to the party 🐙</h1>
-    <button id="startButton">Let's play!</button>
-   </div>
-
-   <!-- Screen Game  -->
-   <div id="game-screen" class = "container">
-    <div id="game-box">
+    <div id="splashscreen">
+      <h1>🐙 Octopus to the party 🐙</h1>
+      <button id="startButton">Let's play!</button>
     </div>
-   </div>
 
-   <!-- End Game  -->
-   <div id="game-over-screen" class="container">
-   </div>
+    <!-- Screen Game  -->
+    <div id="game-screen" class="container">
+      <div id="life-counter-container">
+        <div id="life-counter">
+          <img src="./Images/lifefull.png" alt="heart full" />
+          <img src="./Images/lifefull.png" alt="heart full" />
+          <img src="./Images/lifefull.png" alt="heart full" />
+          <img src="./Images/lifefull.png" alt="heart full" />
+          <img src="./Images/lifefull.png" alt="heart full" />
+        </div>
+      </div>
+      <div id="game-box"></div>
+    </div>
 
-
+    <!-- End Game  -->
+    <div id="game-over-screen" class="container">
+      <div>
+        <img src="./Images/GAME OVER.png" alt="octopus" />
+        <h2>
+          Oh no! You couldn’t save Pulpiño... 😢<br />
+          Next time make sure to keep the ocean clean
+        </h2>
+      </div>
+    </div>
 
     <script src="js/main.js"></script>
     <script src="js/pulpito.js"></script>
     <script src="js/trash.js"></script>
-</body>
+  </body>
 </html>

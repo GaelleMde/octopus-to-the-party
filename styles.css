@@ -49,5 +49,32 @@ body{
 
   }
 
+  #game-over-screen {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: aliceblue;
+    text-align: center;
+  }
+
+  #life-counter {
+    border-style: solid;
+    border-color: red;
+    padding: 10px 10px;
+    border-radius: 5px ;
+    display: flex;
+    justify-content: flex-start;
+  
+  }
+
+  #life-counter img {
+    height: 20px;
+
+  }
+
+#life-counter-container {
+    width: 600px ;
+    display: flex;
+}
 
 
