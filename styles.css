@@ -34,6 +34,7 @@ body{
     position: relative;
     overflow: hidden;
     user-select: none;
+    border-radius: 5px;
 }
 
 .container {
@@ -58,18 +59,28 @@ body{
   }
 
   #life-counter {
-    border-style: solid;
+/*     border-style: solid;
     border-color: red;
-    padding: 10px 10px;
+    background-color: aliceblue; */
+    padding: 5px 5px;
     border-radius: 5px ;
     display: flex;
     justify-content: flex-start;
+    
+    margin-bottom: 0;
   
   }
 
   #life-counter img {
     height: 20px;
+    width: auto;
+    transition: all 0.3s ease;
+    padding: 4px 3px;
+  }
 
+  .lost {
+    opacity: 0.3;
+    filter: grayscale(100%);
   }
 
 #life-counter-container {

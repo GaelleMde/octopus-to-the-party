@@ -11,6 +11,7 @@ const resetBtn = document.querySelector("#resetButton");
 
 /* Game box */
 const gameBoxNode = document.querySelector("#game-box");
+const hearts = document.querySelectorAll("#life-counter img");
 
 /* VARIABLES GLOBALES DEL JUEGO */
 let pulpitoObj = null; // es para poder agregar el obj del pulpito aqui, pero que en TODO mi codigo pueda acceder a ella
@@ -74,6 +75,7 @@ function checkCollision() {
       // Collision detected!
       //console.log("El pulpito se ha colisionadoooooo")
       lives--;
+      updatesLives();
       // removemos el trash
       eachTrashObj.node.remove();
       trashArr.splice(index, 1);
@@ -103,11 +105,21 @@ function restart() {
   gameScreenNode.style.display = "flex";
   // resetear vidas
   lives = 5;
-  // resetear pulpito
   // vaciar trash
   trashArr = [];
-  gameBoxNode.innerHTML = ""; // bora todo lo que hay en la caja de juego
+  // bora todo lo que hay en la caja de juego
+  gameBoxNode.innerHTML = "";
   startGame();
+}
+
+function updatesLives() {
+  hearts.forEach((heart, index) => {
+    if (index < lives) {
+      heart.classList.remove("lost");
+    } else {
+      heart.classList.add("lost");
+    }
+  });
 }
 
 /* EVENT LISTENERS */
