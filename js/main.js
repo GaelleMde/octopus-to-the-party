@@ -7,6 +7,7 @@ const gameOverScreen = document.querySelector("#game-over-screen");
 
 /* Buttons */
 const startBtnNode = document.querySelector("#startButton");
+const resetBtn = document.querySelector("#resetButton");
 
 /* Game box */
 const gameBoxNode = document.querySelector("#game-box");
@@ -89,15 +90,25 @@ function gameOver() {
   // 1. detener los intervalos
   clearInterval(gameIntervalId);
   clearInterval(trashIntervalId);
-  // 2. ocultar la pantalla de juevo
+  // 2. ocultar la pantalla de juego
   gameScreenNode.style.display = "none";
   // 3. mostrar pantalla final
   gameOverScreen.style.display = "flex";
 }
 
-/* function lives() {
-  let life = 0;
-} */
+function restart() {
+  // ocultar pantalla de gameover
+  gameOverScreen.style.display = "none";
+  // mostrar pantalla de juego
+  gameScreenNode.style.display = "flex";
+  // resetear vidas
+  lives = 5;
+  // resetear pulpito
+  // vaciar trash
+  trashArr = [];
+  gameBoxNode.innerHTML = ""; // bora todo lo que hay en la caja de juego
+  startGame();
+}
 
 /* EVENT LISTENERS */
 
@@ -105,9 +116,9 @@ startBtnNode.addEventListener("click", () => {
   startGame();
 });
 
-/* gameBoxNode.addEventListener("click", () => {
-    pulpitoObj.moveRight()
-}) */
+gameOverScreen.addEventListener("click", () => {
+  restart();
+});
 
 document.addEventListener("keydown", (event) => {
   if (event.key === "ArrowRight") {
