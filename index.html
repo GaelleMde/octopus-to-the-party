@@ -9,8 +9,38 @@
   <body>
     <!-- Splashscreen -->
     <div id="splashscreen">
-      <h1>🐙 Octopus to the party 🐙</h1>
-      <button id="startButton">Let's play!</button>
+      <div id="instruction-container">
+        <h1>Octopus to the party 🐙</h1>
+        <h2>🐙 About the Game</h2>
+        <p>
+          Octopus to the Party is a playful twist on Pulpo a la Feira, a classic
+          Galician dish. It’s the kind of funny mistranslation tourists — or
+          guiris — might come up with. A fun tribute to Galician culture, with
+          an octopus dodging trash on its way to the party!
+        </p>
+        <hr />
+        <h2>🎯 Game Objective</h2>
+        <ul>
+          <li>Help Pulpiño swim to the party!</li>
+          <li>Goal: score as many points as possible.</li>
+          <li>
+            Avoid the trash left behind by humans (because, let’s be honest,
+            they’re pigs 🐷).
+          </li>
+          <li>Every time you hit a piece of garbage → you lose 1 life ❤️.</li>
+          <li>You have 5 lives in total.</li>
+        </ul>
+        <hr />
+        <h2>🎮 Controls</h2>
+        <ul>
+          <li>
+            Use the arrow keys ⬅️⬆️➡️⬇️ to swim and dodge the obstacles and
+            catch the shrimps 🦐
+          </li>
+        </ul>
+
+        <button id="startButton">Let's play!</button>
+      </div>
     </div>
 
     <!-- Screen Game  -->
@@ -33,7 +63,11 @@
     <!-- End Game  -->
     <div id="game-over-screen" class="container">
       <div>
-        <img src="./Images/Pulpino-GameOver-cropped.svg" alt="octopus" />
+        <img
+          src="./Images/Pulpino-GameOver-cropped.svg"
+          alt="octopus"
+          id="gameoverimg"
+        />
         <h2>
           Oh no! You couldn’t save Pulpiño... 😢<br />
           Next time make sure to keep the ocean clean
