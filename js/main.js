@@ -12,6 +12,7 @@ const resetBtn = document.querySelector("#resetButton");
 /* Game box */
 const gameBoxNode = document.querySelector("#game-box");
 const hearts = document.querySelectorAll("#life-counter img");
+const shrimpcounterNode = document.querySelector("#shrimp-counter span");
 
 /* VARIABLES GLOBALES DEL JUEGO */
 let pulpitoObj = null; // es para poder agregar el obj del pulpito aqui, pero que en TODO mi codigo pueda acceder a ella
@@ -20,6 +21,9 @@ let trashArr = [];
 let gameIntervalId = null;
 let trashIntervalId = null;
 let lives = 5;
+let shrimpArr = [];
+let shrimpIntervalid = null;
+let shrimpcounter = 0;
 
 /* GLOBAL FUNCTIONS OF THE GAME */
 
@@ -38,11 +42,17 @@ function startGame() {
     gameLoop();
   }, Math.round(1000 / 60));
 
-  //5. Iniciamos otros intervalos del juego
+  //5. Iniciamos intervalo de caida de los elementos de basura
   trashIntervalId = setInterval(() => {
     let trashObj = new Trash();
     trashArr.push(trashObj);
-  }, 2000);
+  }, 600);
+
+  //6- Iniciamos intervalo de caida de los shrimps
+  shrimpIntervalid = setInterval(() => {
+    let shrimpObj = new Shrimp();
+    shrimpArr.push(shrimpObj);
+  }, 6000);
 }
 
 function gameLoop() {
@@ -50,8 +60,13 @@ function gameLoop() {
   trashArr.forEach((eachTrashObj) => {
     eachTrashObj.automaticMovement();
   });
+  shrimpArr.forEach((eachshrimpObj) => {
+    eachshrimpObj.automaticMovement();
+  });
   trashDestroy();
+  shrimpDestroy();
   checkCollision();
+  checkCollisionShrimp();
 }
 
 function trashDestroy() {
@@ -61,6 +76,13 @@ function trashDestroy() {
     trashArr[0].node.remove();
     //2.remover del array
     trashArr.shift();
+  }
+}
+
+function shrimpDestroy() {
+  if (shrimpArr.length > 0 && shrimpArr[0].y >= 450) {
+    shrimpArr[0].node.remove();
+    shrimpArr.shift();
   }
 }
 
@@ -80,7 +102,7 @@ function checkCollision() {
       eachTrashObj.node.remove();
       trashArr.splice(index, 1);
 
-      console.log(lives);
+      // console.log(lives);
       if (lives === 0) {
         gameOver();
       }
@@ -110,6 +132,10 @@ function restart() {
   // bora todo lo que hay en la caja de juego
   gameBoxNode.innerHTML = "";
   startGame();
+  updatesLives();
+  // resetear number of shrimps
+  shrimpcounter = 0;
+  shrimpcounterNode.innerText = 0;
 }
 
 function updatesLives() {
@@ -120,6 +146,30 @@ function updatesLives() {
       heart.classList.add("lost");
     }
   });
+}
+
+function checkCollisionShrimp() {
+  shrimpArr.forEach((eachshrimpObj, index) => {
+    if (
+      pulpitoObj.x < eachshrimpObj.x + eachshrimpObj.w &&
+      pulpitoObj.x + pulpitoObj.w > eachshrimpObj.x &&
+      pulpitoObj.y < eachshrimpObj.y + eachshrimpObj.h &&
+      pulpitoObj.y + pulpitoObj.h > eachshrimpObj.y
+    ) {
+      // Collision detected!
+      //console.log("Te has comido el shrimp");
+
+      // removemos el shrimp
+      eachshrimpObj.node.remove();
+      shrimpArr.splice(index, 1);
+      updatesNumberShrimp();
+    }
+  });
+}
+
+function updatesNumberShrimp() {
+  shrimpcounter++;
+  shrimpcounterNode.innerText = shrimpcounter;
 }
 
 /* EVENT LISTENERS */
@@ -138,5 +188,11 @@ document.addEventListener("keydown", (event) => {
   }
   if (event.key === "ArrowLeft") {
     pulpitoObj.moveLeft();
+  }
+  if (event.key === "ArrowUp") {
+    pulpitoObj.moveUp();
+  }
+  if (event.key === "ArrowDown") {
+    pulpitoObj.moveDown();
   }
 });

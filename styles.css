@@ -1,4 +1,6 @@
 
+@import url('https://fonts.googleapis.com/css2?family=Chewy&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
 
 body{
     background-color: #00b4fc;    
@@ -15,6 +17,7 @@ body{
     flex-direction: column;
     color: aliceblue;
     font-size: 25px;
+    font-family:"Chewy", system-ui;
 }
 
 #startButton {
@@ -56,17 +59,13 @@ body{
     align-items: center;
     color: aliceblue;
     text-align: center;
+    font-family:"Nunito", sans-serif;
+    margin-top: 40px;
   }
 
   #life-counter {
-/*     border-style: solid;
-    border-color: red;
-    background-color: aliceblue; */
     padding: 5px 5px;
-    border-radius: 5px ;
-    display: flex;
-    justify-content: flex-start;
-    
+    border-radius: 5px ;   
     margin-bottom: 0;
   
   }
@@ -86,13 +85,18 @@ body{
 #life-counter-container {
     width: 600px ;
     display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 #resetButton {
     border-style: none;
     padding: 20px 30px;
     font-size: 20px;
-    margin-top: 40px;
+    margin-top: 20px;
     border-radius: 10px; 
 }
 
+#game-over-screen h2 {
+    margin-top: 0;
+}
