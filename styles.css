@@ -13,7 +13,7 @@ body{
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    color: #2C2C2C;
+    color: aliceblue;
     font-size: 25px;
     font-family:"Chewy", system-ui;
     background-image: url("Images/WallpaperIsland.svg");
@@ -41,8 +41,14 @@ body{
     color: #485460;
     font-family: "Chewy", system-ui;
     font-size: 1.5rem;
-
+    transition: opacity 0.3s ease;
 }
+
+button:hover {
+    transform: scale(1.05);
+}
+
+
 
 #game-box {
     background-image: url("Images/WallpaperSea.jpg") ;
@@ -129,7 +135,8 @@ body{
 #instruction-container {
     display: flex;    
     flex-direction: column;
-    background: rgba(255, 255, 255, 0.1);
+    /* background: rgba(255, 255, 255, 0.1); */
+    background-color: rgba(94, 178, 204, 0.5);
     backdrop-filter: blur(10px);
     border-radius: 5px;
     height: auto;
