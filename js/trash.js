@@ -39,7 +39,7 @@ class Trash {
     this.node.style.top = `${this.y}px`;
     this.node.style.left = `${this.x}px`;
 
-    this.speed = 3;
+    this.speed = 2;
   }
 
   automaticMovement() {

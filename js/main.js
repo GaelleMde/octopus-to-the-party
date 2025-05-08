@@ -20,6 +20,9 @@ const shrimpSound = new Audio("./Audio/eatShrimpsSounds.mp3");
 const startSound = new Audio("./Audio/startTheGameSounds.mp3");
 const punchSound = new Audio("./Audio/punch.mp3");
 
+/* Game Over */
+const scoreNode = document.querySelector("#game-over-screen span");
+
 /* VARIABLES GLOBALES DEL JUEGO */
 let pulpitoObj = null; // es para poder agregar el obj del pulpito aqui, pero que en TODO mi codigo pueda acceder a ella
 // let trashOjb = null;
@@ -58,7 +61,8 @@ function startGame() {
   shrimpIntervalid = setInterval(() => {
     let shrimpObj = new Shrimp();
     shrimpArr.push(shrimpObj);
-  }, 6000);
+  }, Math.floor(Math.random() * 2000) + 3000);
+
   playStartSound();
   playMusicGame();
 }
@@ -128,6 +132,7 @@ function gameOver() {
   // 3. mostrar pantalla final
   gameOverScreen.style.display = "flex";
   musicGame.pause();
+  scoreNode.innerText = shrimpcounter;
 }
 
 function restart() {
@@ -183,6 +188,8 @@ function updatesNumberShrimp() {
   shrimpcounterNode.innerText = shrimpcounter;
 }
 
+/* MUSIC FONCTIONS */
+
 function playMusicGame() {
   musicGame.currentTime = 0;
   musicGame.loop = true;
@@ -232,3 +239,5 @@ document.addEventListener("keydown", (event) => {
     pulpitoObj.moveDown();
   }
 });
+
+Math.floor(Math.random() * 10000) + 2000;
