@@ -2,7 +2,7 @@ class Pulpito {
   constructor() {
     // todas las propriedades/caracteristicas
     this.node = document.createElement("img");
-    this.node.src = "../Images/Pulpito.png";
+    this.node.src = "./Images/Pulpito.png";
 
     gameBoxNode.append(this.node); // coge el nodo imagen y lo inserta en el juego
 

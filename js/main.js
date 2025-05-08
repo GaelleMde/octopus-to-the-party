@@ -14,6 +14,12 @@ const gameBoxNode = document.querySelector("#game-box");
 const hearts = document.querySelectorAll("#life-counter img");
 const shrimpcounterNode = document.querySelector("#shrimp-counter span");
 
+/* Audio */
+const musicGame = new Audio("./Audio/Deep Sea Antics.mp3");
+const shrimpSound = new Audio("./Audio/eatShrimpsSounds.mp3");
+const startSound = new Audio("./Audio/startTheGameSounds.mp3");
+const punchSound = new Audio("./Audio/punch.mp3");
+
 /* VARIABLES GLOBALES DEL JUEGO */
 let pulpitoObj = null; // es para poder agregar el obj del pulpito aqui, pero que en TODO mi codigo pueda acceder a ella
 // let trashOjb = null;
@@ -53,6 +59,8 @@ function startGame() {
     let shrimpObj = new Shrimp();
     shrimpArr.push(shrimpObj);
   }, 6000);
+  playStartSound();
+  playMusicGame();
 }
 
 function gameLoop() {
@@ -101,6 +109,7 @@ function checkCollision() {
       // removemos el trash
       eachTrashObj.node.remove();
       trashArr.splice(index, 1);
+      playPunchSound();
 
       // console.log(lives);
       if (lives === 0) {
@@ -118,6 +127,7 @@ function gameOver() {
   gameScreenNode.style.display = "none";
   // 3. mostrar pantalla final
   gameOverScreen.style.display = "flex";
+  musicGame.pause();
 }
 
 function restart() {
@@ -163,6 +173,7 @@ function checkCollisionShrimp() {
       eachshrimpObj.node.remove();
       shrimpArr.splice(index, 1);
       updatesNumberShrimp();
+      playShrimpSound();
     }
   });
 }
@@ -170,6 +181,31 @@ function checkCollisionShrimp() {
 function updatesNumberShrimp() {
   shrimpcounter++;
   shrimpcounterNode.innerText = shrimpcounter;
+}
+
+function playMusicGame() {
+  musicGame.currentTime = 0;
+  musicGame.loop = true;
+  musicGame.volume = 0.1;
+  musicGame.play();
+}
+
+function playShrimpSound() {
+  shrimpSound.currentTime = 0;
+  shrimpSound.volume = 0.3;
+  shrimpSound.play();
+}
+
+function playStartSound() {
+  startSound.currentTime = 0;
+  startSound.volume = 0.3;
+  startSound.play();
+}
+
+function playPunchSound() {
+  punchSound.currentTime = 0;
+  punchSound.volume = 0.3;
+  punchSound.play();
 }
 
 /* EVENT LISTENERS */

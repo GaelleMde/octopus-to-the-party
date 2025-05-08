@@ -1,19 +1,19 @@
 class Trash {
   constructor(type) {
     const trashImages = [
-      "../Images/Cup.png",
-      "../Images/Cigarette.png",
-      "../Images/can.png",
-      "../Images/plastic bag.png",
-      "../Images/shoe.png",
+      "./Images/Cup.png",
+      "./Images/Cigarette.png",
+      "./Images/can.png",
+      "./Images/plastic bag.png",
+      "./Images/flipflop.svg",
     ];
 
     const randomIndex = Math.floor(Math.random() * trashImages.length);
-    const randomImages = trashImages[randomIndex];
+    const randomselectedImage = trashImages[randomIndex];
 
     // todas las propriedades/caracteristicas
     this.node = document.createElement("img");
-    this.node.src = randomImages;
+    this.node.src = randomselectedImage;
 
     gameBoxNode.append(this.node); // coge el nodo imagen y lo inserta en el juego
 
@@ -21,6 +21,14 @@ class Trash {
     this.y = -40;
     this.w = 25;
     this.h = 40;
+
+    if (randomselectedImage === "./Images/Cigarette.png") {
+      this.w = 30;
+      this.h = 5;
+    } else if (randomselectedImage === "./Images/flipflop.svg") {
+      this.w = 40;
+      this.h = 25;
+    }
 
     // definimos dimensiones iniciales
     this.node.style.width = `${this.w}px`;
