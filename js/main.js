@@ -188,7 +188,7 @@ function updatesNumberShrimp() {
   shrimpcounterNode.innerText = shrimpcounter;
 }
 
-/* MUSIC FONCTIONS */
+/* AUDIO FONCTIONS */
 
 function playMusicGame() {
   musicGame.currentTime = 0;
